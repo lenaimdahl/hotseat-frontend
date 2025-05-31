@@ -8,8 +8,8 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/lobby/:lobbyId" element={<Lobby />} />
-        <Route path="/game/:gameId" element={<Game />} />
+        <Route path="/lobby" element={<Lobby />} />
+        <Route path="/game" element={<Game />} />
       </Routes>
     </BrowserRouter>
   );
