@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <Card>
+    <Card
+      style={{ width: "100%", maxWidth: 400, margin: "auto", marginTop: 50 }}
+    >
       <CardContent>
-        <Typography>Willkommen bei unserem Spiel!</Typography>
+        <Typography variant="h6">Hotseat Connect - Dein Spiel!</Typography>
         <Stack>
-          <Button>
+          <Button variant="outlined" color="primary" style={{ marginTop: 30 }}>
             <Link to="/lobby">Erstelle Lobby</Link>
           </Button>
           <br />
-          <Button>
+          <Button variant="contained" color="secondary">
             <Link to="/game">Spiel beitreten</Link>
           </Button>
         </Stack>
