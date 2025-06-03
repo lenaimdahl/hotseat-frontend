@@ -70,11 +70,15 @@ const Home: React.FC = () => {
                 variant="outlined"
                 value={lobbyCode}
                 onChange={handleInputChange}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleJoinGame();
+                }}
               />
               <Button
                 variant="outlined"
                 color="secondary"
                 onClick={handleJoinGame}
+                disabled={!lobbyCode}
               >
                 Beitreten
               </Button>

@@ -1,9 +1,9 @@
-import { Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
-    <Stack
+    <Box
       style={{
         height: "100vh",
         width: "100vw",
@@ -33,6 +33,6 @@ export default function Layout() {
       >
         &copy; 2025 Mein Spiel
       </footer>
-    </Stack>
+    </Box>
   );
 }
