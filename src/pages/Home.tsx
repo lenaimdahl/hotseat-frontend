@@ -1,4 +1,5 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
+import type { ChangeEvent } from "react";
 import {
   Button,
   Card,
@@ -12,22 +13,22 @@ import { v4 as uuidv4 } from "uuid";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const [joinCode, setJoinCode] = useState<string>("");
-  const [showJoinInput, setShowJoinInput] = useState<boolean>(false);
+  const [lobbyCode, setLobbyCode] = useState<string>("");
+  const [showInputField, setShowInputField] = useState<boolean>(false);
 
   const handleCreateLobby = (): void => {
-    const lobbyId: string = uuidv4().slice(0, 6).toUpperCase();
+    const lobbyId: string = uuidv4().slice(0, 5).toUpperCase();
     navigate(`/game/${lobbyId}`);
   };
 
   const handleJoinGame = (): void => {
-    if (joinCode.trim()) {
-      navigate(`/game/${joinCode.trim().toUpperCase()}`);
+    if (lobbyCode.trim()) {
+      navigate(`/game/${lobbyCode.trim().toUpperCase()}`);
     }
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setJoinCode(e.target.value);
+    setLobbyCode(e.target.value);
   };
 
   return (
@@ -35,17 +36,13 @@ const Home: React.FC = () => {
       sx={{
         width: "100%",
         maxWidth: 400,
-        mx: "auto",
-        mt: 10,
-        textAlign: "center",
-        p: 2,
       }}
     >
       <CardContent>
         <Typography variant="h5" gutterBottom>
           🔥 HotSeat Connect
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography variant="h6">
           Starte ein Spiel oder trete einer Lobby bei
         </Typography>
 
@@ -58,11 +55,11 @@ const Home: React.FC = () => {
             Lobby erstellen
           </Button>
 
-          {!showJoinInput ? (
+          {!showInputField ? (
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => setShowJoinInput(true)}
+              onClick={() => setShowInputField(true)}
             >
               Spiel beitreten
             </Button>
@@ -71,7 +68,7 @@ const Home: React.FC = () => {
               <TextField
                 label="Lobby-Code eingeben"
                 variant="outlined"
-                value={joinCode}
+                value={lobbyCode}
                 onChange={handleInputChange}
               />
               <Button
