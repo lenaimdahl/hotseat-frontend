@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import { Typography, Card, CardContent } from "@mui/material";
 
 const GameLobby: React.FC = () => {
-  const { gameId } = useParams<{ gameId: string }>();
-
-  if (!gameId) {
+  // const { lobbyId } = useParams<{ lobbyId: string }>();
+  const params = useParams<{ lobbyId: string }>();
+  console.log("useParams output:", params);
+  const { lobbyId } = params;
+  if (!lobbyId) {
     return <Typography>Kein Lobby-Code gefunden.</Typography>;
   }
 
@@ -14,7 +16,7 @@ const GameLobby: React.FC = () => {
       <CardContent>
         <Typography variant="h4">Willkommen im Spiel!</Typography>
         <Typography variant="h6">
-          Lobby-Code: <strong>{gameId}</strong>
+          Lobby-Code: <strong>{lobbyId}</strong>
         </Typography>
       </CardContent>
     </Card>

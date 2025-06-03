@@ -9,7 +9,7 @@ export default function Router() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/game/:gameId" element={<GameLobby />} />
+          <Route path="/game/:lobbyId" element={<GameLobby />} />
         </Route>
       </Routes>
     </BrowserRouter>

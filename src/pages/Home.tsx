@@ -9,16 +9,24 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+import { BackendAPI } from "../service/ApiHandler";
+
+const backendAPI = new BackendAPI();
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const [lobbyCode, setLobbyCode] = useState<string>("");
   const [showInputField, setShowInputField] = useState<boolean>(false);
 
-  const handleCreateLobby = (): void => {
-    const lobbyId: string = uuidv4().slice(0, 5).toUpperCase();
-    navigate(`/game/${lobbyId}`);
+  const handleCreateLobby = async () => {
+    try {
+      const { code } = await backendAPI.createLobby();
+      console.log("Erstellter Lobby-Code:", code);
+      if (!code) throw new Error("Kein Lobby-Code erhalten");
+      navigate(`/game/${code}`);
+    } catch (err) {
+      console.error("Fehler beim Erstellen der Lobby:", err);
+    }
   };
 
   const handleJoinGame = (): void => {
