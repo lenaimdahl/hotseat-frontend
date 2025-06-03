@@ -3,10 +3,8 @@ import { useParams } from "react-router-dom";
 import { Typography, Card, CardContent } from "@mui/material";
 
 const GameLobby: React.FC = () => {
-  // const { lobbyId } = useParams<{ lobbyId: string }>();
-  const params = useParams<{ lobbyId: string }>();
-  console.log("useParams output:", params);
-  const { lobbyId } = params;
+  const { lobbyId } = useParams<{ lobbyId: string }>();
+
   if (!lobbyId) {
     return <Typography>Kein Lobby-Code gefunden.</Typography>;
   }
