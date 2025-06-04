@@ -10,29 +10,24 @@ export default function Layout() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        backgroundColor: "#2C085F",
+        top: 0,
+        left: 0,
+        position: "absolute",
+        right: 0,
+        bottom: 0,
+        margin: 0,
+        padding: 0,
+        overflow: "hidden",
       }}
     >
       <main
         style={{
-          padding: 16,
+          paddingTop: 90,
         }}
       >
         <Outlet />
       </main>
-      <footer
-        style={{
-          padding: 16,
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#eee",
-          bottom: 0,
-          position: "absolute",
-        }}
-      >
-        &copy; 2025 Mein Spiel
-      </footer>
     </Box>
   );
 }

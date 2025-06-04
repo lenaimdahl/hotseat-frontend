@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
-import {
-  Button,
-  Card,
-  CardContent,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { BackendAPI } from "../service/ApiHandler";
 
@@ -40,61 +33,69 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Card
-      sx={{
-        width: "100%",
-        maxWidth: 400,
-      }}
-    >
-      <CardContent>
-        <Typography variant="h5" gutterBottom>
-          🔥 HotSeat Connect
-        </Typography>
-        <Typography variant="h6">
-          Starte ein Spiel oder trete einer Lobby bei
-        </Typography>
+    <Box>
+      <Typography variant="h4" style={{ textAlign: "center", color: "#fff" }}>
+        🔥 HotSeat Zone
+      </Typography>
 
-        <Stack spacing={3} mt={4}>
+      <Stack spacing={5} sx={{ maxWidth: 600, mx: "auto", mt: 10 }}>
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: "#FF00C8",
+            color: "#fff",
+            padding: "20px 20px",
+            borderRadius: "16px",
+          }}
+          onClick={handleCreateLobby}
+        >
+          Lobby erstellen
+        </Button>
+        {!showInputField ? (
           <Button
-            variant="contained"
-            color="primary"
-            onClick={handleCreateLobby}
+            variant="outlined"
+            style={{
+              backgroundColor: "#D633FF",
+              color: "#fff",
+              padding: "20px 20px",
+              borderRadius: "16px",
+            }}
+            onClick={() => setShowInputField(true)}
           >
-            Lobby erstellen
+            Spiel beitreten
           </Button>
-
-          {!showInputField ? (
+        ) : (
+          <>
+            <TextField
+              label="Lobby-Code eingeben"
+              variant="outlined"
+              value={lobbyCode}
+              style={{
+                backgroundColor: "#FFA726",
+                color: "#fff",
+                borderRadius: "16px",
+              }}
+              onChange={handleInputChange}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleJoinGame();
+              }}
+            />
             <Button
               variant="outlined"
-              color="secondary"
-              onClick={() => setShowInputField(true)}
+              style={{
+                backgroundColor: "#8E44AD",
+                color: "#fff",
+                borderRadius: "10px",
+              }}
+              onClick={handleJoinGame}
+              disabled={!lobbyCode}
             >
-              Spiel beitreten
+              Beitreten
             </Button>
-          ) : (
-            <>
-              <TextField
-                label="Lobby-Code eingeben"
-                variant="outlined"
-                value={lobbyCode}
-                onChange={handleInputChange}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") handleJoinGame();
-                }}
-              />
-              <Button
-                variant="outlined"
-                color="secondary"
-                onClick={handleJoinGame}
-                disabled={!lobbyCode}
-              >
-                Beitreten
-              </Button>
-            </>
-          )}
-        </Stack>
-      </CardContent>
-    </Card>
+          </>
+        )}
+      </Stack>
+    </Box>
   );
 };
 
