@@ -16,15 +16,15 @@ const Home: React.FC = () => {
       const { code } = await backendAPI.createLobby();
       console.log("Erstellter Lobby-Code:", code);
       if (!code) throw new Error("Kein Lobby-Code erhalten");
-      navigate(`/game/${code}`);
+      navigate(`/lobby/${code}`);
     } catch (err) {
       console.error("Fehler beim Erstellen der Lobby:", err);
     }
   };
 
-  const handleJoinGame = (): void => {
+  const handleJoinLobby = (): void => {
     if (lobbyCode.trim()) {
-      navigate(`/game/${lobbyCode.trim().toUpperCase()}`);
+      navigate(`/lobby/${lobbyCode.trim().toUpperCase()}`);
     }
   };
 
@@ -77,7 +77,7 @@ const Home: React.FC = () => {
               }}
               onChange={handleInputChange}
               onKeyDown={(e) => {
-                if (e.key === "Enter") handleJoinGame();
+                if (e.key === "Enter") handleJoinLobby();
               }}
             />
             <Button
@@ -87,7 +87,7 @@ const Home: React.FC = () => {
                 color: "#fff",
                 borderRadius: "10px",
               }}
-              onClick={handleJoinGame}
+              onClick={handleJoinLobby}
               disabled={!lobbyCode}
             >
               Beitreten

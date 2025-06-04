@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home.tsx";
 import Layout from "../components/Layout.tsx";
-import GameLobby from "../pages/GameLobby.tsx";
+import Lobby from "../pages/Lobby.tsx";
+import Game from "../pages/Game.tsx";
 
 export default function Router() {
   return (
@@ -9,7 +10,8 @@ export default function Router() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/game/:lobbyId" element={<GameLobby />} />
+          <Route path="/lobby/:lobbyId" element={<Lobby />} />
+          <Route path="/lobby/:lobbyId/game" element={<Game />} />
         </Route>
       </Routes>
     </BrowserRouter>
