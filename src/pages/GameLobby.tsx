@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Typography, Card, CardContent } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
 const GameLobby: React.FC = () => {
   const { lobbyId } = useParams<{ lobbyId: string }>();
@@ -10,14 +10,20 @@ const GameLobby: React.FC = () => {
   }
 
   return (
-    <Card sx={{ maxWidth: 600, mx: "auto", mt: 10, p: 3, textAlign: "center" }}>
-      <CardContent>
-        <Typography variant="h4">Willkommen im Spiel!</Typography>
-        <Typography variant="h6">
-          Lobby-Code: <strong>{lobbyId}</strong>
-        </Typography>
-      </CardContent>
-    </Card>
+    <Box
+      sx={{
+        color: "#fff",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Typography variant="h4">Willkommen im Spiel!</Typography>
+      <Typography variant="h6" style={{ color: "#FF00C8", marginTop: "20px" }}>
+        Lobby-Code: <strong>{lobbyId}</strong>
+      </Typography>
+    </Box>
   );
 };
 

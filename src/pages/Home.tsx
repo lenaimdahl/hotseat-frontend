@@ -81,7 +81,7 @@ const Home: React.FC = () => {
               }}
             />
             <Button
-              variant="outlined"
+              variant="contained"
               style={{
                 backgroundColor: "#8E44AD",
                 color: "#fff",
