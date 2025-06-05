@@ -1,4 +1,4 @@
-function Game() {
+function Game(username) {
   return <div>Game, list, points</div>;
 }
 

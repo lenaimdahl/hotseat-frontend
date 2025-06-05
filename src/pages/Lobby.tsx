@@ -26,13 +26,16 @@ const Lobby: React.FC = () => {
       if (!user) {
         throw new Error("Kein user erhalten");
       }
+
+      localStorage.setItem("lobbyCode", lobbyCode);
+      localStorage.setItem("user", JSON.stringify(user));
+
       navigate(`/lobby/${lobbyCode}/game`, {
         state: { user },
       });
     } catch (error) {
       console.error("Fehler beim Hinzufügen eines users zur Lobby.", error);
     }
-    setUserName("");
   };
 
   return (
