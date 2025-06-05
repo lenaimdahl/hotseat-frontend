@@ -19,13 +19,26 @@ export class BackendAPI {
       throw error;
     }
   }
+
   async createLobby() {
     try {
       const { data } = await this.api.post("/api/lobby");
-      console.log("Lobby created:", data);
       return data;
     } catch (error) {
       console.error("Error while saving lobby:", error);
+      throw error;
+    }
+  }
+
+  async joinUser(lobbyCode: string, username: string) {
+    try {
+      const { data } = await this.api.post(`/api/lobby/${lobbyCode}/join`, {
+        username,
+      });
+      console.log("Lobby created:", data);
+      return { user: data.user };
+    } catch (error) {
+      console.log("Error while joining user to lobby:", error);
       throw error;
     }
   }
